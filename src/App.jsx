@@ -2,6 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
+// NEW: Import your banner images directly
+import aiBanner from './assets/ai-banner.jpg';
+import insuranceBanner from './assets/insurance-banner.jpg';
+
 // Custom Hook for detecting when an element is in view
 const useInView = (options) => {
   const ref = useRef(null);
@@ -132,7 +136,7 @@ function App() {
     e.preventDefault();
     setStatus('Sending...');
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('https://vasim-portfolio-server.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -197,7 +201,6 @@ function App() {
         <main className="content">
           <AnimatedSection id="experience">
             <h2>Experience</h2>
-            {/* New Timeline Structure */}
             <div className="timeline">
               <div className="timeline-item">
                 <div className="timeline-dot"></div>
@@ -239,13 +242,15 @@ function App() {
             <h2>Projects</h2>
             <div className="projects-grid">
               <div className="card project-card">
-                <div className="project-banner" style={{ backgroundImage: `url('/ai-banner.jpg')` }}></div>
+                {/* UPDATED to use imported image variable */}
+                <div className="project-banner" style={{ backgroundImage: `url(${aiBanner})` }}></div>
                 <h3>AI Mock Interview Web App</h3>
                 <p>A web platform for real-time, AI-driven job interview simulations built with React.js.</p>
                 <div className="project-links"><a href="https://github.com/vasimsayyed/AI-Mock-Interview-Web-App-">GitHub</a></div>
               </div>
               <div className="card project-card">
-                <div className="project-banner" style={{ backgroundImage: `url('/insurance-banner.jpg')` }}></div>
+                {/* UPDATED to use imported image variable */}
+                <div className="project-banner" style={{ backgroundImage: `url(${insuranceBanner})` }}></div>
                 <h3>Insurance Premium Predictor</h3>
                 <p>A web app using ML models to predict medical insurance costs for users.</p>
                 <div className="project-links"><a href="https://github.com/vasimsayyed/Medical-health-insurance-prediction-using-ML">GitHub</a></div>
