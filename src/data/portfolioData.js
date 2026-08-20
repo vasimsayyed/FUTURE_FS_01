@@ -8,7 +8,7 @@ export const personalInfo = {
   roleTagline: "Software Engineer & Full Stack Developer",
   typingRoles: [
     "Full Stack Software Engineer",
-    "React & SpringBoot Specialist",
+    "React & Frontend Specialist",
     "AI & ML Web Application Builder",
     "Interactive WebGL Creator"
   ],
@@ -26,7 +26,7 @@ export const personalInfo = {
 
 export const statsData = [
   { label: "Projects Completed", value: "10+", suffix: "" },
-  { label: "Core Technologies", value: "12+", suffix: "" },
+  { label: "Core Technologies", value: "8+", suffix: "" },
   { label: "DSA & Problem Solving", value: "173+", suffix: "Problems" },
   { label: "Code Dedication", value: "100%", suffix: "" }
 ];
@@ -141,11 +141,7 @@ export const skillsData = [
   { name: "HTML5 & CSS3", percentage: 95, category: "frontend", icon: "Layout", color: "#f97316", desc: "Semantic markup, modern flexbox/grid, responsive systems" },
   { name: "Tailwind CSS", percentage: 92, category: "frontend", icon: "Palette", color: "#38bdf8", desc: "Design tokens, utility-first UI, micro-animations" },
   { name: "Java", percentage: 80, category: "backend", icon: "Cpu", color: "#ef4444", desc: "OOP principles, multithreading, collections framework" },
-  { name: "SpringBoot", percentage: 75, category: "backend", icon: "Server", color: "#22c55e", desc: "REST APIs, dependency injection, JPA/Hibernate" },
-  { name: "Firebase", percentage: 80, category: "backend", icon: "Flame", color: "#f59e0b", desc: "Firestore, authentication, real-time database" },
-  { name: "Python", percentage: 82, category: "ai-tools", icon: "Terminal", color: "#3b82f6", desc: "Scripting, data manipulation, automation" },
   { name: "Machine Learning", percentage: 78, category: "ai-tools", icon: "Brain", color: "#a855f7", desc: "Regression, classification, model evaluation" },
-  { name: "Streamlit", percentage: 85, category: "ai-tools", icon: "Layers", color: "#ec4899", desc: "Interactive data visualization apps & ML dashboards" },
   { name: "Git & GitHub", percentage: 88, category: "ai-tools", icon: "GitBranch", color: "#f43f5e", desc: "Version control, branching, pull requests, CI/CD" },
   { name: "Data Structures & Algo", percentage: 85, category: "core", icon: "Binary", color: "#6366f1", desc: "Trees, graphs, dynamic programming, complexity analysis" }
 ];

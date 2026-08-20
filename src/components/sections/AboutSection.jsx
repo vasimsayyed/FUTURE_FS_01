@@ -49,12 +49,12 @@ export default function AboutSection() {
     {
       icon: Database,
       title: "Backend & Systems",
-      desc: "Building reliable REST APIs, database schemas, and microservices with Java, SpringBoot, and Node.js."
+      desc: "Building reliable REST APIs, robust database architectures, and systems with Java, OOP, and Node.js."
     },
     {
       icon: Cpu,
       title: "AI & Data Science",
-      desc: "Integrating machine learning regression models, automated speech/text analysis, and real-time Streamlit tools."
+      desc: "Integrating machine learning regression models, automated speech/text analysis, and intelligent real-time platforms."
     },
     {
       icon: Rocket,
