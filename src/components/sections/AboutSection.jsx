@@ -171,11 +171,8 @@ export default function AboutSection() {
               {stat.suffix && <span className="text-xs ml-1 font-sans text-slate-400">{stat.suffix}</span>}
             </div>
 
-            <div className="text-xs sm:text-sm font-semibold text-white tracking-wide mb-0.5">
+            <div className="text-xs sm:text-sm font-semibold text-white tracking-wide">
               {stat.label}
-            </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-400 font-mono">
-              {stat.description}
             </div>
           </motion.div>
         ))}

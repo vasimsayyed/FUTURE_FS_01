@@ -25,10 +25,10 @@ export const personalInfo = {
 };
 
 export const statsData = [
-  { label: "Projects Completed", value: "10+", suffix: "", description: "Built with React, SpringBoot & ML" },
-  { label: "Core Technologies", value: "12+", suffix: "", description: "Across Frontend, Backend & AI" },
-  { label: "DSA & Problem Solving", value: "300+", suffix: "Problems", description: "C/C++ Abdul Bari DSA Mastery" },
-  { label: "Code Dedication", value: "100%", suffix: "", description: "Responsive & Scalable Standards" }
+  { label: "Projects Completed", value: "10+", suffix: "" },
+  { label: "Core Technologies", value: "12+", suffix: "" },
+  { label: "DSA & Problem Solving", value: "173+", suffix: "Problems" },
+  { label: "Code Dedication", value: "100%", suffix: "" }
 ];
 
 export const experienceData = [
