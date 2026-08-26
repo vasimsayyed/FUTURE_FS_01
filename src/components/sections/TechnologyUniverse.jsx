@@ -119,10 +119,10 @@ export default function TechnologyUniverse() {
         })}
       </div>
 
-      {/* Skills Matrix (2-col mobile, 3x3 desktop) */}
+      {/* Skills Matrix (1-col mobile, 2-col tablet, 3-col desktop) */}
       <motion.div
         layout
-        className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 w-full"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 w-full"
       >
         <AnimatePresence>
           {filteredSkills.map((skill) => {
@@ -140,19 +140,19 @@ export default function TechnologyUniverse() {
               >
                 <TiltCard
                   maxTilt={8}
-                  className="border border-slate-800/80 hover:border-cyan-500/40 bg-slate-950/70 p-3 sm:p-6 flex flex-col justify-between h-full w-full rounded-xl sm:rounded-2xl"
+                  className="border border-slate-800/80 hover:border-cyan-500/40 bg-slate-950/70 p-4 sm:p-6 flex flex-col justify-between h-full w-full rounded-xl sm:rounded-2xl"
                 >
-                  <div className="flex items-start justify-between gap-1.5 sm:gap-3 mb-2.5 sm:mb-4">
+                  <div className="flex items-center justify-between gap-2 sm:gap-3 mb-3 sm:mb-4">
                     {/* Icon container */}
                     <div
-                      className="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 shrink-0"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 shrink-0"
                       style={{
                         backgroundColor: `${skill.color}15`,
                         borderColor: `${skill.color}40`,
                         boxShadow: `0 0 12px ${skill.color}20`
                       }}
                     >
-                      <Icon className="w-4 h-4 sm:w-6 sm:h-6" style={{ color: skill.color }} />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" style={{ color: skill.color }} />
                     </div>
 
                     {/* Circular meter */}
@@ -160,10 +160,10 @@ export default function TechnologyUniverse() {
                   </div>
 
                   <div>
-                    <h3 className="text-xs sm:text-base font-bold text-white mb-0.5 sm:mb-1 group-hover:text-cyan-300 transition-colors truncate">
+                    <h3 className="text-sm sm:text-base font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">
                       {skill.name}
                     </h3>
-                    <p className="text-[10px] sm:text-xs text-slate-400 font-normal leading-tight sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
+                    <p className="text-xs text-slate-400 font-normal leading-relaxed">
                       {skill.desc}
                     </p>
                   </div>

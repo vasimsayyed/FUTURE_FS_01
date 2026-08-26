@@ -155,9 +155,9 @@ export default function HeroHoloSphere() {
   }
 
   return (
-    <div className="relative w-full h-[320px] sm:h-[380px] md:h-[480px] lg:h-[520px] flex items-center justify-center">
+    <div className="relative w-full h-[240px] sm:h-[320px] md:h-[420px] lg:h-[500px] flex items-center justify-center max-w-full overflow-hidden">
       {/* Outer ambient glow halo */}
-      <div className="absolute inset-0 m-auto w-64 h-64 sm:w-72 sm:h-72 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-violet-500/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 m-auto w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-violet-500/20 rounded-full blur-3xl pointer-events-none" />
 
       <Canvas
         camera={{ position: [0, 0, 6.2], fov: 45 }}
