@@ -138,7 +138,7 @@ export default function ContactExperience() {
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="text-[10px] text-slate-500 uppercase tracking-wider">Location</div>
-                    <div className="text-slate-200 font-medium truncate text-xs sm:text-sm">India (Open to Global Remote)</div>
+                    <div className="text-slate-200 font-medium truncate text-xs sm:text-sm">{personalInfo.location}</div>
                   </div>
                 </div>
               </div>

@@ -1,36 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Code, Cpu, Terminal, Database, Rocket, ShieldCheck } from 'lucide-react';
+import { 
+  Code, 
+  Cpu, 
+  Terminal, 
+  Database, 
+  Rocket, 
+  ShieldCheck, 
+  GraduationCap, 
+  Smartphone, 
+  Layers, 
+  CheckCircle2,
+  Sparkles,
+  Award
+} from 'lucide-react';
 import SectionHeader from '../ui/SectionHeader';
 import TiltCard from '../ui/TiltCard';
-import { personalInfo, statsData } from '../../data/portfolioData';
+import { personalInfo, statsData, qualificationsData, areasOfExpertise } from '../../data/portfolioData';
 
 // Counter component for stats
 function Counter({ value, isInView }) {
   const [count, setCount] = useState(0);
-  const numericValue = parseInt(value.replace(/\D/g, ''), 10) || 0;
-  const nonNumeric = value.replace(/[0-9]/g, '');
+  const isFloat = value.includes('.');
+  const numericValue = isFloat 
+    ? parseFloat(value) 
+    : (parseInt(value.replace(/\D/g, ''), 10) || 0);
+  const nonNumeric = value.replace(/[0-9.]/g, '');
 
   useEffect(() => {
     if (!isInView) return;
     let start = 0;
     const duration = 1200;
-    const stepTime = Math.abs(Math.floor(duration / (numericValue || 1)));
+    const steps = 40;
+    const stepIncrement = numericValue / steps;
+    let current = 0;
+    
     const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start >= numericValue) {
+      current += stepIncrement;
+      if (current >= numericValue) {
         clearInterval(timer);
         setCount(numericValue);
+      } else {
+        setCount(isFloat ? parseFloat(current.toFixed(2)) : Math.floor(current));
       }
-    }, Math.max(stepTime, 25));
+    }, duration / steps);
 
     return () => clearInterval(timer);
-  }, [isInView, numericValue]);
+  }, [isInView, numericValue, isFloat]);
 
   return (
     <span>
-      {count}
+      {isFloat ? count.toFixed(2) : count}
       {nonNumeric}
     </span>
   );
@@ -43,23 +63,23 @@ export default function AboutSection() {
   const coreFocus = [
     {
       icon: Code,
-      title: "Frontend Engineering",
-      desc: "Creating pixel-perfect, reactive, and fluid 3D web interfaces using React, Vite, Tailwind, and Framer Motion."
+      title: "React.js Web Engineering",
+      desc: "Architecting responsive, reusable, and component-driven web applications with modern state and API hooks."
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile Apps (React Native)",
+      desc: "Building production cross-platform mobile apps with NativeWind, fluid gestures, and offline-ready flows."
     },
     {
       icon: Database,
-      title: "Backend & Systems",
-      desc: "Building reliable REST APIs, robust database architectures, and systems with Java, OOP, and Node.js."
+      title: "Backend APIs & Node.js",
+      desc: "Engineering high-throughput REST APIs, authentication layers, and scalable schemas with Express & MongoDB."
     },
     {
-      icon: Cpu,
-      title: "AI & Data Science",
-      desc: "Integrating machine learning regression models, automated speech/text analysis, and intelligent real-time platforms."
-    },
-    {
-      icon: Rocket,
-      title: "Performance & DX",
-      desc: "Optimizing bundle sizes, lazy-loading heavy 3D scenes, clean code standards, and seamless Git workflows."
+      icon: Layers,
+      title: "State & Real-Time Sync",
+      desc: "Implementing centralized state with Redux Toolkit, RTK Query, automated caching, and real-time chat."
     }
   ];
 
@@ -67,10 +87,11 @@ export default function AboutSection() {
     <section id="about" ref={ref} className="relative py-10 sm:py-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full">
       <SectionHeader
         badge="System Architecture & Profile"
-        title="Engineering Intelligent Digital Systems"
-        subtitle="Bridging high-performance frontend interactivity with robust enterprise backends and machine learning intelligence."
+        title="Software Engineer & Full Stack Developer"
+        subtitle="Technically skilled Software Engineer with hands-on production experience in frontend and backend application development."
       />
 
+      {/* Main Profile & Pillars Section */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-stretch mb-8 sm:mb-10 w-full">
         {/* Main 3D Layered Glass Profile Card */}
         <div className="lg:col-span-7 w-full">
@@ -95,21 +116,21 @@ export default function AboutSection() {
                 Hello, I'm <span className="text-cyan-400">Vasim Sayyed</span>
               </h3>
               <div className="text-xs sm:text-sm font-mono text-slate-400 mb-4">
-                Full Stack Software Engineer & AI Developer
+                Software Engineer @ VyomX Tech Solutions | Full Stack & Mobile
               </div>
 
               <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed mb-5 font-normal">
-                I am a dedicated Software Engineer specialized in building full-stack web architectures and AI-driven platforms. With a solid foundation in Data Structures and Algorithms in C/C++ alongside enterprise Java and modern React ecosystems, I craft solutions that balance aesthetic elegance with computational efficiency.
+                {personalInfo.bio}
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5 font-mono text-xs text-slate-300">
                 <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>Problem Solver (DSA Mastery)</span>
+                  <span>SDLC, Debugging & Testing</span>
                 </div>
                 <div className="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 flex items-center gap-2">
                   <Terminal className="w-4 h-4 text-cyan-400 shrink-0" />
-                  <span>Clean Code & Modular Architecture</span>
+                  <span>Git, Redux Toolkit & RTK Query</span>
                 </div>
               </div>
             </div>
@@ -150,6 +171,87 @@ export default function AboutSection() {
               </motion.div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Qualifications & Areas of Expertise Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 mb-8 sm:mb-10 w-full">
+        {/* Education & Qualifications Card */}
+        <div className="lg:col-span-5 w-full">
+          <TiltCard
+            maxTilt={5}
+            className="h-full border border-slate-800 hover:border-cyan-500/40 bg-slate-950/70 p-5 sm:p-7 flex flex-col justify-between w-full"
+          >
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center gap-1.5">
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  QUALIFICATIONS
+                </span>
+                <span className="text-[11px] sm:text-xs font-mono text-slate-400">
+                  {qualificationsData.period}
+                </span>
+              </div>
+
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-1.5 tracking-tight">
+                {qualificationsData.degree}
+              </h3>
+              <div className="text-xs sm:text-sm font-semibold text-cyan-400 mb-3">
+                {qualificationsData.institution}
+              </div>
+
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 font-mono text-xs font-semibold mb-4">
+                <Award className="w-4 h-4 text-cyan-400" />
+                <span>{qualificationsData.cgpa}</span>
+              </div>
+
+              <div className="space-y-2 pt-2 border-t border-slate-800/80">
+                {qualificationsData.highlights.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 mt-0.5 shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TiltCard>
+        </div>
+
+        {/* Areas of Expertise Grid */}
+        <div className="lg:col-span-7 w-full">
+          <TiltCard
+            maxTilt={5}
+            className="h-full border border-slate-800 hover:border-cyan-500/40 bg-slate-950/70 p-5 sm:p-7 flex flex-col justify-between w-full"
+          >
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-4">
+                <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  AREAS OF EXPERTISE
+                </span>
+                <span className="text-[11px] sm:text-xs font-mono text-slate-400">Core Proficiencies</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {areasOfExpertise.map((area, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/30 transition-all"
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
+                      <h4 className="text-xs sm:text-sm font-semibold text-white truncate">
+                        {area.title}
+                      </h4>
+                    </div>
+                    <p className="text-[11px] text-slate-400 leading-relaxed line-clamp-2">
+                      {area.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TiltCard>
         </div>
       </div>
 
